@@ -1,0 +1,1384 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Mi API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "CorreoElectronico": {
+                    "type": "string"
+                  },
+                  "Contrasena": {
+                    "type": "string"
+                  },
+                  "NumeroTelefono": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "CorreoElectronico": {
+                  "style": "form"
+                },
+                "Contrasena": {
+                  "style": "form"
+                },
+                "NumeroTelefono": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CorreoElectronico": {
+                    "type": "string"
+                  },
+                  "Contrasena": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "CorreoElectronico": {
+                  "style": "form"
+                },
+                "Contrasena": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Mesas": {
+      "get": {
+        "tags": [
+          "Mesas"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Mesa"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Mesa"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Mesa"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Mesas"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Capacidad",
+                  "EstaDisponible",
+                  "RestauranteId"
+                ],
+                "type": "object",
+                "properties": {
+                  "RestauranteId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Capacidad": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "EstaDisponible": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "encoding": {
+                "RestauranteId": {
+                  "style": "form"
+                },
+                "Capacidad": {
+                  "style": "form"
+                },
+                "EstaDisponible": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mesa"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mesa"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mesa"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mesas/{id}": {
+      "get": {
+        "tags": [
+          "Mesas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mesa"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mesa"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mesa"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Mesas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Capacidad",
+                  "EstaDisponible"
+                ],
+                "type": "object",
+                "properties": {
+                  "Capacidad": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "EstaDisponible": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "encoding": {
+                "Capacidad": {
+                  "style": "form"
+                },
+                "EstaDisponible": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Mesas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Resenas": {
+      "get": {
+        "tags": [
+          "Resenas"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resena"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resena"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resena"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Resenas"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Calificacion",
+                  "Comentario",
+                  "RestauranteId",
+                  "UsuarioId"
+                ],
+                "type": "object",
+                "properties": {
+                  "RestauranteId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "UsuarioId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Calificacion": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Comentario": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "RestauranteId": {
+                  "style": "form"
+                },
+                "UsuarioId": {
+                  "style": "form"
+                },
+                "Calificacion": {
+                  "style": "form"
+                },
+                "Comentario": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resena"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resena"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resena"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resenas/{id}": {
+      "get": {
+        "tags": [
+          "Resenas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resena"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resena"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resena"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Resenas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Calificacion",
+                  "Comentario"
+                ],
+                "type": "object",
+                "properties": {
+                  "Calificacion": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Comentario": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Calificacion": {
+                  "style": "form"
+                },
+                "Comentario": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Resenas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reservas": {
+      "get": {
+        "tags": [
+          "Reservas"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reserva"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reserva"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reserva"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Reservas"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "FechaHoraReserva",
+                  "NumeroDePersonas",
+                  "RestauranteId",
+                  "UsuarioId"
+                ],
+                "type": "object",
+                "properties": {
+                  "RestauranteId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "UsuarioId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "FechaHoraReserva": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "NumeroDePersonas": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "PeticionesEspeciales": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "RestauranteId": {
+                  "style": "form"
+                },
+                "UsuarioId": {
+                  "style": "form"
+                },
+                "FechaHoraReserva": {
+                  "style": "form"
+                },
+                "NumeroDePersonas": {
+                  "style": "form"
+                },
+                "PeticionesEspeciales": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reserva"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reserva"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reserva"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Reservas/{id}": {
+      "get": {
+        "tags": [
+          "Reservas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reserva"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reserva"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reserva"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Reservas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Estado",
+                  "FechaHoraReserva",
+                  "NumeroDePersonas",
+                  "RestauranteId",
+                  "UsuarioId"
+                ],
+                "type": "object",
+                "properties": {
+                  "RestauranteId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "UsuarioId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "FechaHoraReserva": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "NumeroDePersonas": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "PeticionesEspeciales": {
+                    "type": "string"
+                  },
+                  "Estado": {
+                    "$ref": "#/components/schemas/EstadoReserva"
+                  }
+                }
+              },
+              "encoding": {
+                "RestauranteId": {
+                  "style": "form"
+                },
+                "UsuarioId": {
+                  "style": "form"
+                },
+                "FechaHoraReserva": {
+                  "style": "form"
+                },
+                "NumeroDePersonas": {
+                  "style": "form"
+                },
+                "PeticionesEspeciales": {
+                  "style": "form"
+                },
+                "Estado": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reservas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Restaurantes": {
+      "get": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurante"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurante"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurante"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Capacidad",
+                  "Cocina",
+                  "Nombre",
+                  "Ubicacion"
+                ],
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "Ubicacion": {
+                    "type": "string"
+                  },
+                  "Cocina": {
+                    "type": "string"
+                  },
+                  "Capacidad": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "Ubicacion": {
+                  "style": "form"
+                },
+                "Cocina": {
+                  "style": "form"
+                },
+                "Capacidad": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurante"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurante"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurante"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Restaurantes/{id}": {
+      "get": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurante"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurante"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurante"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Capacidad",
+                  "Cocina",
+                  "Nombre",
+                  "Ubicacion"
+                ],
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "Ubicacion": {
+                    "type": "string"
+                  },
+                  "Cocina": {
+                    "type": "string"
+                  },
+                  "Capacidad": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "Ubicacion": {
+                  "style": "form"
+                },
+                "Cocina": {
+                  "style": "form"
+                },
+                "Capacidad": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Restaurantes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuarios": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuarios/{id}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "CorreoElectronico",
+                  "Nombre",
+                  "NumeroTelefono"
+                ],
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "CorreoElectronico": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "NumeroTelefono": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "CorreoElectronico": {
+                  "style": "form"
+                },
+                "NumeroTelefono": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EstadoReserva": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Mesa": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "restauranteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "capacidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "estaDisponible": {
+            "type": "boolean"
+          },
+          "restaurante": {
+            "$ref": "#/components/schemas/Restaurante"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Resena": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "restauranteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usuarioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "calificacion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comentario": {
+            "type": "string",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "restaurante": {
+            "$ref": "#/components/schemas/Restaurante"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Reserva": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "restauranteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usuarioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fechaHoraReserva": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numeroDePersonas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "peticionesEspeciales": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "$ref": "#/components/schemas/EstadoReserva"
+          },
+          "restaurante": {
+            "$ref": "#/components/schemas/Restaurante"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Restaurante": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "ubicacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "cocina": {
+            "type": "string",
+            "nullable": true
+          },
+          "capacidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reservas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Reserva"
+            },
+            "nullable": true
+          },
+          "mesas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Mesa"
+            },
+            "nullable": true
+          },
+          "resenas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Resena"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "correoElectronico": {
+            "type": "string",
+            "nullable": true
+          },
+          "contrasena": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroTelefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "reservas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Reserva"
+            },
+            "nullable": true
+          },
+          "resenas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Resena"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
