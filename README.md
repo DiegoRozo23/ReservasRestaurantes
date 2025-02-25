@@ -73,4 +73,6 @@ Para estructurar de manera clara los datos de entrada y salida de la API, se han
 - **Controlar la exposición de datos sensibles:** Limitando la información que se envía o recibe en cada operación.
 - **Simplificar el mapeo entre las entidades del modelo y los datos transferidos:** Mejorando la claridad y mantenibilidad del código.
 
+## Diagrama BD:
 
+![image](https://github.com/user-attachments/assets/bf52047a-f1f6-49a0-823a-b9945c7d44c6)
